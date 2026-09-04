@@ -125,4 +125,4 @@ python --version
 - 此前：大一只浅尝 C
 - 兴趣：理财（CAPE、VIX 等），后续可能做投研类 Agent 练手，但求职主线仍是 Agent 工程
 
-有问题或想对照三年规划，见 Cursor 里的 [杭州 Agent 三年规划 Canvas](file:///C:/Users/aoetc/.cursor/projects/empty-window/canvases/hangzhou-agent-roadmap.canvas.tsx)。
+有问题或想对照三年规划：见 `notes/roadmap_杭州Agent_2026市场校准版.md`，以及 Cursor Canvas「杭州 Agent 开发工程师 · 大二到毕业」（含【更新】市场校准页签）。
