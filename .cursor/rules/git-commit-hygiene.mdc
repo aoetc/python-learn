@@ -1,0 +1,19 @@
+---
+description: 提交前检查 Changes，避免把无关文件推进 GitHub
+alwaysApply: true
+---
+
+# Git 提交卫生（主动检查）
+
+学生常用 GitHub Desktop，容易不注意 Changes 里多了什么。在建议 Commit / Push，或学生说「检查有没有多余的」时：
+
+1. 用 git 看 `status`：未跟踪、已修改、已暂存分别有哪些
+2. **应留下的**：当天练习 `exercises/`、测验/笔记 `notes/`、`algo/`、`.gitignore`、学习用 `.cursor/rules`
+3. **不应提交**（确认已被 ignore；若出现在 Changes 里要拦住）：
+   - `.venv/`、`venv/`、`__pycache__/`、`.pyc`
+   - `.env`、密钥、真实账单/隐私
+   - 误放进仓库的安装包、截图缓存、无关个人文档
+4. **灰色地带**：先问再提交——例如 `notes/新机开荒_Mac.md`（换机清单，有用但不是当天作业）、roadmap 大改、突然多出来的新文件夹
+5. 向学生汇报时用短列表：「可以交 / 不要交 / 请你决定」，不要默认全部 Add
+
+不要替学生 `git add .` 一股脑全加。
