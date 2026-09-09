@@ -1,0 +1,86 @@
+{
+  "tab": "start",
+  "checks": {
+    "gh-account": true,
+    "gh-desktop": true,
+    "gh-signin": true,
+    "gh-repo": true,
+    "gh-cursor": true,
+    "gh-commit": true,
+    "gh-publish": true,
+    "day-d8": true,
+    "day-d1": true,
+    "day-d2": true,
+    "day-d3": true,
+    "day-d4": true,
+    "day-d5": true,
+    "day-d6": true,
+    "day-d7": true,
+    "day-d9": true,
+    "habit-algo": false,
+    "part-d10-liao": true,
+    "part-d10-do": true,
+    "sunday-review": false,
+    "part-d10-git": true,
+    "day-d10": true,
+    "part-d11-liao": true,
+    "part-d11-do": true,
+    "part-d11-git": true,
+    "day-d11": true
+  },
+  "focus-day": "d10",
+  "week-todos": [
+    {
+      "id": "w1",
+      "content": "W1 9/1–9/7 · 装好 Python、Git、Cursor；建仓库 README",
+      "status": "pending"
+    },
+    {
+      "id": "w2",
+      "content": "W2 9/8–9/14 · 用 venv 跑通课内第一份 Python 作业",
+      "status": "pending"
+    },
+    {
+      "id": "w3",
+      "content": "W3 9/15–9/21 · 脚本：读一份 CSV 打印行数与列名",
+      "status": "pending"
+    },
+    {
+      "id": "w4",
+      "content": "W4 9/22–9/28 · 每天至少 1 次有意义的 commit",
+      "status": "pending"
+    },
+    {
+      "id": "w5",
+      "content": "W5 9/29–10/5 · 把 CSV 脚本改成函数 + assert",
+      "status": "pending"
+    },
+    {
+      "id": "w6",
+      "content": "W6 10/6–10/12 · CLI 子命令：add 追加一行 CSV",
+      "status": "pending"
+    },
+    {
+      "id": "w7",
+      "content": "W7 10/13–10/19 · dca-ledger：list 按日期列出",
+      "status": "pending"
+    },
+    {
+      "id": "w8",
+      "content": "W8 10/20–10/26 · summary 输出月度投入与累计",
+      "status": "pending"
+    },
+    {
+      "id": "w9",
+      "content": "W9 10/27–11/2 · 样例 data/sample.csv + 使用说明",
+      "status": "pending"
+    },
+    {
+      "id": "w10",
+      "content": "W10 11/3–11/9 · GitHub 公开；阶段 A 出口完成",
+      "status": "pending"
+    }
+  ],
+  "today-day": "d12",
+  "home-tab": "start"
+}

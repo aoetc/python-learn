@@ -27,10 +27,12 @@
 
 ```text
 python-learn/
-├── README.md          # 本文件：项目说明
-├── hello.py           # 第一个程序（待创建）
-├── notes/             # 按章节整理的练习脚本
-├── algo/              # 力扣简单题（数组、哈希、栈、二分）
+├── README.md
+├── hello.py
+├── notes/             # 测验、错题、roadmap 文字版、同步说明
+├── algo/              # 力扣简单题
+├── exercises/         # 按天编程练习
+├── canvases/          # Cursor 规划页源文件（双机同步用）
 └── data/              # 本地样例数据（不放真实隐私）
 ```
 
