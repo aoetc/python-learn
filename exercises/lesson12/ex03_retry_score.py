@@ -16,3 +16,10 @@
 # 运行：python exercises/lesson12/ex03_retry_score.py
 
 # TODO: 在下面写代码
+while True:
+    try:
+        a=int(float(input('请输入分数')))
+        print(a)
+        break
+    except ValueError:
+        print('请输入整数')

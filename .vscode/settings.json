@@ -1,0 +1,19 @@
+{
+  "editor.inlayHints.enabled": "off",
+  "editor.parameterHints.enabled": false,
+  "editor.inlineSuggest.enabled": false,
+  "python.analysis.inlayHints.callArgumentNames": "off",
+  "python.analysis.inlayHints.functionReturnTypes": false,
+  "python.analysis.inlayHints.variableTypes": false,
+  "[python]": {
+    "editor.inlayHints.enabled": "off"
+  },
+  "python.defaultInterpreterPath": "/Users/aoetc/Developer/python-learn/.venv/bin/python",
+  "python.terminal.executeInFileDir": false,
+  "python.terminal.activateEnvironment": false,
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "python.pythonPath": "/Users/aoetc/Developer/python-learn/.venv/bin/python",
+  "python.locator": "js",
+  "python.useEnvironmentsExtension": false,
+  "python-envs.defaultEnvManager": "ms-python.python:venv"
+}

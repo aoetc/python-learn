@@ -11,3 +11,9 @@
 # 自测：先输入 60，再输入 abc
 
 # TODO: 在下面写代码
+try:
+    num=int(input('请输入一个整数:'))
+    print(f'你输入的整数是{num}')
+except ValueError:
+    print(f'请输入整数')
+

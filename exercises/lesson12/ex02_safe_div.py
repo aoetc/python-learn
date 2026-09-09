@@ -8,3 +8,10 @@
 # 运行：python exercises/lesson12/ex02_safe_div.py
 
 # TODO: 在下面写代码
+a=float(input('请输入数'))
+b=float(input('请输入数'))
+try:
+    result=a/b
+    print(result)
+except ZeroDivisionError:
+    print('除数不能为0')
