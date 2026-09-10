@@ -139,6 +139,10 @@ venv.bak/
 # 仅本机保留：Mac 到货开荒清单，不上传 GitHub（换机弄完可删）
 notes/新机开荒_Mac.md
 
+# 完整上游 clone（含嵌套 .git）；精选 Skill 已扁平到同级目录
+.cursor/skills/edu-agent-skills/
+.cursor/skills/llm-intern-skill/.git/
+
 # Spyder project settings
 .spyderproject
 .spyproject
