@@ -18,3 +18,12 @@
 # 运行：python exercises/review_before_lesson13/ex03_safe_int.py
 
 # TODO: 在下面写代码
+def safe_int(text):
+    try:
+        return int(text)
+    except ValueError:
+        return None
+print(safe_int("60"))
+print(safe_int("abc"))
+print(safe_int("3.14"))
+#为什么3.14会失败呢

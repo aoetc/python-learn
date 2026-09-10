@@ -1,4 +1,4 @@
-# 复习编程 2：可变参数求平均
+ #复习编程 2：可变参数求平均
 #
 # 要求：
 #   1. 定义 avg(x, *args)：至少一个分数，返回平均数（可以是小数）
@@ -13,3 +13,12 @@
 # 运行：python exercises/review_before_lesson13/ex02_safe_avg.py
 
 # TODO: 在下面写代码
+def avg(x, *args):
+    sum=x
+    for i in args:
+        sum+=i
+    average=sum/(1+(len(args)))
+    return average
+print(avg(90,80))
+print(avg(90,80,70))
+print(avg(90))

@@ -10,3 +10,7 @@
 # 运行：python exercises/review_before_lesson13/ex01_unique_names.py
 
 # TODO: 在下面写代码
+def unique_names(names):
+    return list(set(names))
+print(len(unique_names(["李宏","李宏","王五"])))
+print(unique_names(["李宏","李宏","王五"]))
