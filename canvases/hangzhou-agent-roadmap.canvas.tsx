@@ -785,28 +785,26 @@ function Timeline() {
 
       <H3>阶段 A · Python</H3>
       <Text>
-        语法、venv、CSV/JSON、异常、Git。算法每周 3–4 题不断档（笔试底子从现在攒）。出口
-        dca-ledger。
+        语法、venv、CSV/JSON、异常、Git。算法每周 3–4 题不断档。出口 dca-ledger；结束前检查：README
+        三步能跑、.gitignore、venv 说明、至少一次跨机复现。
       </Text>
 
       <H3>阶段 B · 最小 Agent【更新】</H3>
       <Text>
-        API → Function Calling → 真实工具 → RAG → 10 条 BadCase。用 LangChain 或 Dify
-        跑通一次，能讲取舍，不堆全家桶。支线：2–3 个原创 Skill 上 GitHub（用熟→修烂→公开
-        README）。阶段 A 前不碰 Skill。
+        API → 工具 → RAG → 10 条 BadCase（须含工具失败类）。出口硬标准：参数校验或失败样例、挂了有重试/降级/人审、README
+        可维护。LangChain/Dify 跑通一次能讲取舍。Skill 支线 2–3 个。证据合同：没证据不写「企业级/大幅提升」。
       </Text>
 
       <H3>阶段 C · 投递</H3>
       <Text>
-        简历项目大于课程。三个故事：项目/排障/长任务。3 月不够格就继续做，暑假仍是底线。
+        材料日历：2027.1 简历初稿 → 2 月 JD 对照表 → 3 月起双周投递表。三个故事须带证据。暑假仍是底线。
       </Text>
 
       <H3>阶段 D · 第一段实习【更新】</H3>
       <Text>
-        优先：恒生电子、同花顺、杭州 AI 创业。对齐 Tool/MCP、Prompt、评测、内部工具。结束立刻脱敏进
-        GitHub。
+        恒生（Skills/评测）、同花顺（业务+工程）、杭州创业（能下场改）。结束交付：架构图 + ≥5 BadCase + 3
+        个改过的坑。
       </Text>
-
       <H3>阶段 E · 大三【更新】</H3>
       <Text>
         二段冲刺：蚂蚁、淘天、阿里云、字节。课内 Java 对齐到「能写简单接口」。笔试专项：选择+编程；OS/网络/数据库；Linux/Git/SQL。SFT/LoRA
@@ -870,9 +868,23 @@ function MarketCalibrate() {
             "B",
             "2–3 个 SKILL.md 上 GitHub；公式用熟→修烂→公开；A 前不碰",
           ],
+          [
+            "B 出口硬标准 + 证据合同",
+            "B→C",
+            "工具失败样例、挂了怎么办、评测含工具失败；没证据不写企业级/大幅提升",
+          ],
+          [
+            "投递材料日历",
+            "C 前",
+            "2027.1 简历初稿；2 月 JD 对照；3 月起双周投递表",
+          ],
+          [
+            "D 结束三件套",
+            "D",
+            "架构图 + ≥5 BadCase + 3 个改过的坑（喂二段面试）",
+          ],
         ]}
       />
-
       <H2>【更新】公司分层</H2>
       <Table
         headers={["层级", "目标"]}
