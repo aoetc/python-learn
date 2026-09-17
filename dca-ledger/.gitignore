@@ -1,0 +1,9 @@
+# 忽略本项目本地环境与缓存
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+
+# 真实账单放这里，不要提交
+data/private/
