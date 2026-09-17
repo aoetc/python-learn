@@ -92,7 +92,7 @@ print(data)
 - C. `print(s["name"])`（假设 d 里有 name）
 - D. `d2 = json.loads(s)` 再 `print(d2["name"])`
 
-**5.** 想把 dict 写进 `.json` 文件，更合适的是？A
+**5.** 想把 dict 写进 `.json` 文件，更合适的是？A--B
 
 - A. `json.dumps(d)` 就结束，不用文件
 - B. `json.dump(d, f)`（f 是打开的文件）

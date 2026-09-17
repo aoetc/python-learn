@@ -9,7 +9,7 @@
 
 # TODO: 在下面写代码
 a=float(input('请输入数'))
-b=float(input('请输入数'))
+b22=float(input('请输入数'))
 try:
     result=a/b
     print(result)
