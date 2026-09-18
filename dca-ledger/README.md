@@ -30,5 +30,15 @@ cd ~/Developer/python-learn/dca-ledger
 
 - 不要提交 `.venv`
 - 不要提交真实账单；`data/ledger.csv` 样例可以交
+- 不要在已经出现 `>>>` 的 Python 交互界面里贴上面的命令；先 `exit()` 或 Ctrl+D 退出，再在普通终端里运行。
 
-**不要**在已经出现 `>>>` 的 Python 交互界面里贴上面的命令；先 `exit()` 或 Ctrl+D 退出，再在普通终端里运行。
+## 验收清单（第 24 天）
+
+> 用自己的话写完下面 5 条。每条写清：怎么操作、期望看到什么。
+
+1. 能 add ：运行main.py,输入add，再输入时间金额，看到已保存就是完成，完成后data/ledger.csv多出填写的数据。
+2. 能 list:运行main.py,输入list，会自动输入完data/ledger.csv的所有数据
+3. 文件缺失怎么办：写了try，except代码，文件缺失也不会打断程序运行
+4. 非数字金额怎么办：add 时金额输入非数字（如 abc），提示「金额无效」，不写入文件、不闪退。
+5. 别人怎么安装运行：已安装 Python 3；打开 `python-learn`，运行 `.venv/bin/python dca-ledger/main.py`，看到菜单即可。
+

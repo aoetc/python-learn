@@ -7,16 +7,18 @@
 # 在 dca-ledger 目录下运行：
 #   ../.venv/bin/python main.py
 
-# TODO（第 23 天 · 二选一）：
-#   A. do_find()：输入日期，只打印匹配行
-#   B. do_delete()：删除最后一笔账并写回文件
-# 要求见：notes/lesson23_实操_筛选或删除.md
-# 做完一种即可；菜单和 README 补上对应命令
+# TODO（第 24 天）：
+#   在 README.md 写「验收清单」5 条（见 notes/lesson24_实操_README验收.md）
+#   可选：给 add 的金额加上非数字保护
 def do_add():
     import os
 
-    date = input("请输入日期")
-    money = float(input("请输入金额"))
+    date = input("请输入日期：")
+    try:
+        money = float(input("请输入金额："))
+    except ValueError:
+        print("金额无效，请输入数字（整数或小数）")
+        return  # 不写文件，直接结束本次 add
 
     # 相对 main.py 所在目录找 data/，这样从仓库根目录点 Run 也对
     base = os.path.dirname(os.path.abspath(__file__))
