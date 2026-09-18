@@ -24,6 +24,7 @@ cd ~/Developer/python-learn/dca-ledger
 - `add`：输入日期、金额 → 追加写入 `data/ledger.csv`
 - `list`：打印全部流水
 - `summary`：打印笔数和金额合计
+- `find`：输入日期，只查看那天的流水
 
 ## 注意
 
