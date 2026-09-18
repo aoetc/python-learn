@@ -1,27 +1,33 @@
 # dca-ledger
 
-> 第 19 天：先写骨架。下面标题请你自己填几句（删掉本提示也可）。
-
-## 项目是什么
-
-简单记账小工具
+简单记账小工具（命令行）。
 
 ## 怎么运行
+
+在仓库根目录：
+
+```bash
+.venv/bin/python dca-ledger/main.py
+```
+
+或先进入项目再跑：
+
 ```bash
 cd ~/Developer/python-learn/dca-ledger
 ../.venv/bin/python main.py
 ```
 
-（若你本机用仓库里的 venv，把实际命令写清楚。）
+出现菜单后输入命令即可。
 
-## 计划功能
+## 怎么用
 
-- `add`：记账（日期 + 金额）
-- `list`：查看流水 → 第 21 天再做  
-
-**当前：** 仅脚手架，运行 `main.py` 会打印用法。已经更新到add可记账
+- `add`：输入日期、金额 → 追加写入 `data/ledger.csv`
+- `list`：打印全部流水
+- `summary`：打印笔数和金额合计
 
 ## 注意
 
-- 不要提交 `.venv`  
-- 不要提交真实账单；以后样例数据可以交  
+- 不要提交 `.venv`
+- 不要提交真实账单；`data/ledger.csv` 样例可以交
+
+**不要**在已经出现 `>>>` 的 Python 交互界面里贴上面的命令；先 `exit()` 或 Ctrl+D 退出，再在普通终端里运行。
