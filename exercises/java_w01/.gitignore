@@ -1,0 +1,7 @@
+# IntelliJ IDEA
+.idea/workspace.xml
+.idea/shelf/
+.idea/httpRequests/
+out/
+*.class
+.DS_Store
