@@ -6,13 +6,22 @@
 #
 # 在 dca-ledger 目录下运行：
 #   ../.venv/bin/python main.py
+#
+# 软设巩固：路径只在 ledger_path() 里算一次（可维护）
+
+import os
+
+
+def ledger_path():
+    """账本 CSV 的完整路径（相对本文件所在目录）。"""
+    base = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base, "data", "ledger.csv")
+
 
 # TODO（第 24 天）：
 #   在 README.md 写「验收清单」5 条（见 notes/lesson24_实操_README验收.md）
 #   可选：给 add 的金额加上非数字保护
 def do_add():
-    import os
-
     date = input("请输入日期：")
     try:
         money = float(input("请输入金额："))
@@ -20,9 +29,7 @@ def do_add():
         print("金额无效，请输入数字（整数或小数）")
         return  # 不写文件，直接结束本次 add
 
-    # 相对 main.py 所在目录找 data/，这样从仓库根目录点 Run 也对
-    base = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(base, "data", "ledger.csv")
+    path = ledger_path()
 
     if os.path.exists(path):
         with open(path, "a", encoding="utf-8") as f:
@@ -34,9 +41,7 @@ def do_add():
     print("已保存")
 
 def do_list():
-    import os
-    base = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(base, "data", "ledger.csv")
+    path = ledger_path()
     try:
         with open(path,"r",encoding="utf-8") as f:
             lines=f.readlines()
@@ -46,11 +51,9 @@ def do_list():
         print("还没有数据,请先add")
 
 def do_summary():
-    import os
     count=0
     summary=0.0
-    base = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(base, "data", "ledger.csv")
+    path = ledger_path()
     try:
         with open(path,"r",encoding="utf-8") as f:
             lines=f.readlines()
@@ -75,10 +78,7 @@ def do_summary():
         print("还没有数据,请先add")
 
 def do_find():
-    import os
-
-    base = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(base, "data", "ledger.csv")
+    path = ledger_path()
     date0 = input("请输入你要查找的日期：").strip()
     found = False
     try:

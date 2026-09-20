@@ -8,16 +8,16 @@
 #
 # 通过后把题解函数写在下面，可自测几组 print。
 
-# TODO: 写 class Solution / 函数 containsDuplicate
+from typing import List
+
+
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
         seen = set()
-        for x in nums:          
+        for x in nums:
             if x in seen:
                 return True
             seen.add(x)
         return False
 
-#class Solution:
-#   def containsDuplicate(self, nums: List[int]) -> bool:
-#       return len(set(nums))<len(nums)
+# 也可：return len(set(nums)) < len(nums)
