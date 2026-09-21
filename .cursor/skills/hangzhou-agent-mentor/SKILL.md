@@ -12,7 +12,7 @@ description: >-
 
 ## 优先级（不要颠倒）
 
-1. **日常上课**先遵守仓库规则：`review-mistakes`、`git-commit-hygiene`、`notes/学习进度.md`、`notes/复习_错题与存疑.md`；软设课另见 `soft-design-course` 与 `notes/软设体系_学习进度.md`
+1. **日常上课**先遵守仓库规则：`review-mistakes`、`git-commit-hygiene`、`notes/学习进度.md`、`notes/复习_错题与存疑.md`；软设课另见 `soft-design-course` 与 `notes/软设体系_学习进度.md`；**软工导论**另见 `se-intro-course` 与 `notes/软工导论_学习进度.md`。两门并行时开讲前必读 `notes/软工两课_已讲不重复.md`，已深讲的不重复讲。
 2. **把概念讲清楚 / 苏格拉底追问 / 查误解**时，读取并遵循同级 Skill：
    - `.cursor/skills/simplify-topic/SKILL.md`
    - `.cursor/skills/teach-concept/SKILL.md`
@@ -20,7 +20,13 @@ description: >-
    - `.cursor/skills/misconception-detector/SKILL.md`
    - `.cursor/skills/debug-teacher/SKILL.md`
    - `.cursor/skills/weak-area-tracker/SKILL.md`（更新薄弱点时）
-   - 软设课：优先 `teach-concept`；懵用 `simplify-topic`；答辩口述可用 `socratic-mode`；反复错记 `notes/软设体系_错题与存疑.md`
+   - `.cursor/skills/check-understanding/SKILL.md`（讲完验证，不靠背定义）
+   - `.cursor/skills/deep-dive/SKILL.md`（已经讲对、还要机制时才用）
+   - `.cursor/skills/lesson-plan/SKILL.md`（只有学生要求改计划时）
+   - `.cursor/skills/se-intro-coach/SKILL.md`（导论章节路由）
+   - 导论按主题再读：`writing-requirements`、`prototyping-strategy`、`context-diagram`、`data-dictionary`、`change-impact-analysis`、`requirements-testing`（都在 `.cursor/skills/`，只取教练 skill 里写的那一层）
+   - 软设课：优先 `teach-concept`；讲完用 `check-understanding`；懵用 `simplify-topic`；答辩口述可用 `socratic-mode`；反复错记 `notes/软设体系_错题与存疑.md`
+   - 软工导论：先 `se-intro-coach`；反复错记 `notes/软工导论_错题与存疑.md`；课上自学为主，不强制 7 周赶完。跨对话记忆只用仓库进度表，不另建 learner profile。
 3. **阶段 A 未完成前**（还在廖雪峰/小项目）：不要主动开简历海投、自动投递 Agent
 4. **写简历 / 对 JD / 面试拷打 / 项目包装**时（学生明确要求，或阶段 B 起），读取并遵循：
    - `.cursor/skills/llm-intern-skill/SKILL.md`
