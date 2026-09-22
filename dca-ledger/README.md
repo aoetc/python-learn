@@ -19,12 +19,28 @@ cd ~/Developer/python-learn/dca-ledger
 
 出现菜单后输入命令即可。
 
+## 目录结构
+
+- `main.py`：菜单和 add / list / summary / find（路径用 `ledger_path()`）
+- `data/ledger.csv`：样例账本（可提交）
+- `data/private/`：真实账单放这里（不要提交；在项目 `.gitignore` 里已忽略）
+
 ## 怎么用
 
-- `add`：输入日期、金额 → 追加写入 `data/ledger.csv`
-- `list`：打印全部流水
-- `summary`：打印笔数和金额合计
-- `find`：输入日期，只查看那天的流水
+菜单方式：运行后按提示输入 `add` / `list` / `summary` / `find`。
+
+命令行方式（少问答，在仓库根目录）：
+
+```bash
+.venv/bin/python dca-ledger/main.py list
+.venv/bin/python dca-ledger/main.py summary
+.venv/bin/python dca-ledger/main.py add 2026-09-22 80
+.venv/bin/python dca-ledger/main.py find 2026-09-22
+```
+
+- `add`：后面跟日期、金额  
+- `find`：后面跟日期  
+- 不带参数时仍走原来的菜单  
 
 ## 注意
 
@@ -33,8 +49,6 @@ cd ~/Developer/python-learn/dca-ledger
 - 不要在已经出现 `>>>` 的 Python 交互界面里贴上面的命令；先 `exit()` 或 Ctrl+D 退出，再在普通终端里运行。
 
 ## 验收清单（第 24 天）
-
-> 用自己的话写完下面 5 条。每条写清：怎么操作、期望看到什么。
 
 1. 能 add ：运行main.py,输入add，再输入时间金额，看到已保存就是完成，完成后data/ledger.csv多出填写的数据。
 2. 能 list:运行main.py,输入list，会自动输入完data/ledger.csv的所有数据
