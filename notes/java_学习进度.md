@@ -4,7 +4,7 @@
 > 换电脑：先 **Pull**。学完一小节：勾选本表 + 必要时写 `notes/java_错题与存疑.md` → **Commit + Push**。  
 > Python 主线仍看 `notes/学习进度.md`；两门课进度**分开**，不要混勾。
 
-最后更新：2026-09-20（JDK 25 + IDEA CE 已装；阶段 A / W01）
+最后更新：2026-09-22（阶段 A / W02 开课：switch + 简单方法）
 
 ---
 
@@ -28,10 +28,11 @@
 | 项 | 状态 |
 |----|------|
 | 阶段 | **A · 地基** |
-| 本周 | **W01：Hello World + 语法/数组起步**（环境已就绪） |
-| JDK / IDE | Temurin **25**；**IntelliJ IDEA CE** 已装 |
-| 练习目录 | `exercises/java_w01/`（可用 IDEA Open 本目录） |
-| 下一动作 | **写 Ex01Types → Ex02 → Ex03**（IDEA 里改 TODO 再 Run） |
+| 本周 | **W02：`switch` + 简单 `static` 方法** |
+| JDK / IDE | Temurin **25**；**IntelliJ IDEA CE** |
+| 练习目录 | `exercises/java_w02/` |
+| 测验 | `notes/java_w02_测验_switch与方法.md`（先做练习再做测验） |
+| 下一动作 | IDEA Open `java_w02` → 听讲后写 Ex01 → Ex02 → Ex03 |
 
 ---
 
@@ -54,8 +55,8 @@
 | 装好 JDK，终端 `java -version` / `javac -version` 有输出 | [x] |
 | IDE（IntelliJ IDEA / Eclipse 任一）能新建并运行 Java 项目 | [x] |
 | 跑通 `exercises/java_w01/HelloWorld.java` | [x] |
-| 语法：变量、类型、`if` / `for`、一维数组（W01–W03 练习） | [ ] |
-| **验收**：独立写「成绩数组求平均 / 找最大」 | [ ] |
+| 语法：变量、类型、`if` / `for`、一维数组（W01–W03 练习） | [~] W01 已完成；W02 进行中 |
+| **验收**：独立写「成绩数组求平均 / 找最大」 | [x]（见 `java_w01/Ex03ArrayAvg`） |
 
 ### 阶段 B · OOP 主战场（约 10/13 – 11/9）— 最重要
 
