@@ -4,7 +4,7 @@
 > 换电脑：先 **Pull**。学完一小节：勾选本表 + 必要时写 `notes/java_错题与存疑.md` → **Commit + Push**。  
 > Python 主线仍看 `notes/学习进度.md`；两门课进度**分开**，不要混勾。
 
-最后更新：2026-09-22（阶段 A / W02 开课：switch + 简单方法）
+最后更新：2026-09-28（W04 方法重载 Ex 已完成）
 
 ---
 
@@ -27,12 +27,12 @@
 
 | 项 | 状态 |
 |----|------|
-| 阶段 | **A · 地基** |
-| 本周 | **W02：`switch` + 简单 `static` 方法** |
-| JDK / IDE | Temurin **25**；**IntelliJ IDEA CE** |
-| 练习目录 | `exercises/java_w02/` |
-| 测验 | `notes/java_w02_测验_switch与方法.md`（先做练习再做测验） |
-| 下一动作 | IDEA Open `java_w02` → 听讲后写 Ex01 → Ex02 → Ex03 |
+| 阶段 | **B · OOP 主战场** |
+| 本周 | **W04：方法重载 / 构造重载**（Ex 已过） |
+| 练习目录 | `exercises/java_w04/` |
+| 测验 | `notes/java_w04_测验_方法重载.md` |
+| 已完成 | W01～W04 Ex |
+| 下一动作 | W04 测验已对完 ✓ → 下一课：**继承 extends** |
 
 ---
 
@@ -55,14 +55,14 @@
 | 装好 JDK，终端 `java -version` / `javac -version` 有输出 | [x] |
 | IDE（IntelliJ IDEA / Eclipse 任一）能新建并运行 Java 项目 | [x] |
 | 跑通 `exercises/java_w01/HelloWorld.java` | [x] |
-| 语法：变量、类型、`if` / `for`、一维数组（W01–W03 练习） | [~] W01 已完成；W02 进行中 |
+| 语法：变量、类型、`if` / `for`、一维数组（W01–W03 练习） | [x] W01+W02 已完成 |
 | **验收**：独立写「成绩数组求平均 / 找最大」 | [x]（见 `java_w01/Ex03ArrayAvg`） |
 
 ### 阶段 B · OOP 主战场（约 10/13 – 11/9）— 最重要
 
 | 项 | 完成 |
 |----|------|
-| 类 / 字段 / 方法 / 构造 / `this` / 重载 | [ ] |
+| 类 / 字段 / 方法 / 构造 / `this` / 重载 | [x] |
 | 继承 / 覆盖 / `super` / 多态 | [ ] |
 | 抽象类 vs 接口；封装 `private` + getter | [ ] |
 | **验收**：小模型含继承 + 多态；能口述「重载 vs 覆盖」 | [ ] |
