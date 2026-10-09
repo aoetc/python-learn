@@ -13,23 +13,24 @@
 public class Ex02Super {
     public static void main(String[] args) {
         System.out.println("【Ex02】super 调父类构造");
-
-        // --- TODO: new Student2("li", 90); 再 show() ---
-
+        Student2 a=new Student2("li",90);
+        a.show();
     }
 }
 
 class Person2 {
     String name;
-
-    // --- TODO: 写构造 Person2(String name) ---
-
+    Person2(String name){
+        this.name=name;
+    }
 }
 
 class Student2 extends Person2 {
     int score;
-
-    // --- TODO: 写构造，第一行 super(name); 再 this.score = score; ---
+    Student2(String name, int score) {
+        super(name);
+        this.score = score;
+    }
 
     void show() {
         System.out.println("姓名: " + name + "  成绩: " + score);

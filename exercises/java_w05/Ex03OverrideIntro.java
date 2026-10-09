@@ -19,8 +19,10 @@ public class Ex03OverrideIntro {
     public static void main(String[] args) {
         System.out.println("【Ex03】覆盖 override 入门");
 
-        // --- TODO ---
-
+        Student3 s=new Student3("li",90);
+        Person3 p=new Person3("路人");
+        s.show();
+        p.show();
     }
 }
 
@@ -43,6 +45,7 @@ class Student3 extends Person3 {
         super(name);
         this.score = score;
     }
-
-    // --- TODO: @Override void show() { ... } ---
+    void show(){
+        System.out.println("我是:"+name+"成绩:"+score);
+    }
 }

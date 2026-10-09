@@ -48,6 +48,7 @@
 | Ex01 Student | 把 `class Student` 写进 `main` 里 | 类也写在 `main` **外面** | 局部类能跑，但课内标准写法是类与 `main` 平级 |
 | IDEA 未包含 main | 对着 Student3 Run，或把 `new` 写在类外 | 只 Run `Ex0x...`；`new` 放进 `main` | 一个文件两个类时，**有 main 的那个**才是入口 |
 | W05 Ex01 | 又把 Person/Student 写进 main，括号错乱 | 类放在 main **外面** | 继承练习同样：定义在类级，main 里只 new/调用 |
+| W05 覆盖 | 以为「有 score 才走子类 show」 | 谁调用看**对象实际类型** | `s` 是 Student → 子类 show；`p` 是 Person → 父类 show；score 只是打印内容 |
 
 选择 1C、2B、4B；判断 5对、6对、7错 — 都对。
 
