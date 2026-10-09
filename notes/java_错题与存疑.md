@@ -47,6 +47,7 @@
 | Ex02 | 把 `average` 写进 `main` 里面 | 方法写在 `main` **外面** | Java **不能**在方法里再定义方法；`main` 里只负责**调用** |
 | Ex01 Student | 把 `class Student` 写进 `main` 里 | 类也写在 `main` **外面** | 局部类能跑，但课内标准写法是类与 `main` 平级 |
 | IDEA 未包含 main | 对着 Student3 Run，或把 `new` 写在类外 | 只 Run `Ex0x...`；`new` 放进 `main` | 一个文件两个类时，**有 main 的那个**才是入口 |
+| W05 Ex01 | 又把 Person/Student 写进 main，括号错乱 | 类放在 main **外面** | 继承练习同样：定义在类级，main 里只 new/调用 |
 
 选择 1C、2B、4B；判断 5对、6对、7错 — 都对。
 
