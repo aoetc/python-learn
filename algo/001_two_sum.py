@@ -24,8 +24,6 @@ from typing import List
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # TODO: 先在力扣网页写。通过后再粘贴到这里。
-        pass
         n=len(nums)
         for i in range(n):
             for j in range(i+1,n):
