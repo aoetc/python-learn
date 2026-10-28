@@ -141,13 +141,23 @@ notes/新机开荒_Mac.md
 
 # 完整上游 clone（含嵌套 .git）；精选 Skill 已扁平到同级目录
 .cursor/skills/edu-agent-skills/
-.cursor/skills/llm-intern-skill/.git/
-# 体积大的 PPT/HTML 模板库：装在 ~/.cursor/skills，勿整仓提交
+.cursor/skills/llm-intern-skill/
+# 体积大的 PPT/HTML 模板库 / Office 技能包：装在 ~/.cursor/skills，勿整仓提交
 .cursor/skills/beautiful-html-templates/
 .cursor/skills/guizang-ppt-skill/
 .cursor/skills/html-ppt/
 .cursor/skills/codex-ppt/
-competitions/career-planning-2026/deck/_png/
+.cursor/skills/docx/
+.cursor/skills/pdf/
+.cursor/skills/pptx/
+.cursor/skills/grill-me/
+.cursor/skills/grilling/
+# 比赛材料 / 本地 playground：默认不进学习主仓（要交再说）
+competitions/
+playground/
+
+# macOS
+.DS_Store
 
 # Spyder project settings
 .spyderproject
