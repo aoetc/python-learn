@@ -1,0 +1,29 @@
+@startuml 05_component
+!pragma layout smetana
+skinparam shadowing false
+title 构件图 · Store（实验1 图5）
+
+component Store {
+  component Customer
+  component Order
+  component Product
+
+  Customer -( person
+  Order - person
+  Order -( Orderable
+  Product - Orderable
+}
+
+interface Account
+interface Orderstate
+
+Account )-- Store
+Store --( Orderstate
+
+note bottom
+  小球 = 提供接口
+  插座 = 需要接口
+  Store 的 Account 委托给内部 Customer
+  Store 的 Orderstate 由内部 Order 提供
+end note
+@enduml

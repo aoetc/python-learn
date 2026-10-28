@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+  <rect width="100%" height="100%" fill="#fff"/>
+  <text x="490" y="34" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="20" font-weight="700">图5 构件图 · Store（对照模板重画）</text>
+
+  <!-- outer component -->
+  <rect x="180" y="70" width="680" height="230" fill="#fff" stroke="#222" stroke-width="1.6"/>
+  <rect x="800" y="78" width="18" height="14" fill="none" stroke="#222"/>
+  <rect x="804" y="82" width="6" height="6" fill="none" stroke="#222"/>
+  <text x="520" y="96" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="16" font-weight="700">Store</text>
+
+  <g font-family="PingFang SC, sans-serif" font-size="15">
+    <rect x="250" y="140" width="140" height="70" fill="#e8f6e8" stroke="#222"/>
+    <text x="320" y="180" text-anchor="middle">Customer</text>
+    <rect x="470" y="140" width="140" height="70" fill="#e8eef8" stroke="#222"/>
+    <text x="540" y="180" text-anchor="middle">Order</text>
+    <rect x="690" y="140" width="140" height="70" fill="#fde8e8" stroke="#222"/>
+    <text x="760" y="180" text-anchor="middle">Product</text>
+  </g>
+
+  <!-- Account required on outside, delegated into Customer -->
+  <text x="28" y="168" font-family="PingFang SC, sans-serif" font-size="14">Account</text>
+  <path d="M118 163 A 12 12 0 0 0 118 187" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="118" y1="175" x2="180" y2="175" stroke="#222"/>
+  <line x1="180" y1="175" x2="250" y2="175" stroke="#222" stroke-dasharray="5 4"/>
+  <text x="186" y="166" font-family="PingFang SC, sans-serif" font-size="12">&lt;&lt;delegate&gt;&gt;</text>
+
+  <!-- person: Customer requires, Order provides -->
+  <text x="430" y="158" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="13">person</text>
+  <path d="M390 164 A 11 11 0 0 1 390 186" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="390" y1="175" x2="462" y2="175" stroke="#222"/>
+  <circle cx="470" cy="175" r="8" fill="#fff" stroke="#222" stroke-width="2"/>
+
+  <!-- Orderable: Order requires, Product provides -->
+  <text x="650" y="158" text-anchor="middle" font-family="PingFang SC, sans-serif" font-size="13">Orderable</text>
+  <path d="M610 164 A 11 11 0 0 1 610 186" fill="none" stroke="#222" stroke-width="2"/>
+  <line x1="610" y1="175" x2="682" y2="175" stroke="#222"/>
+  <circle cx="690" cy="175" r="8" fill="#fff" stroke="#222" stroke-width="2"/>
+
+  <!-- Orderstate provided by Order, delegated out of Store -->
+  <circle cx="540" cy="210" r="8" fill="#fff" stroke="#222" stroke-width="2"/>
+  <line x1="540" y1="218" x2="540" y2="300" stroke="#222" stroke-dasharray="5 4"/>
+  <line x1="540" y1="300" x2="860" y2="300" stroke="#222"/>
+  <circle cx="868" cy="300" r="8" fill="#fff" stroke="#222" stroke-width="2"/>
+  <text x="560" y="292" font-family="PingFang SC, sans-serif" font-size="12">&lt;&lt;delegate&gt;&gt;</text>
+  <text x="884" y="305" font-family="PingFang SC, sans-serif" font-size="14">Orderstate</text>
+
+  <text x="40" y="360" font-family="PingFang SC, sans-serif" font-size="14">小球 = 我提供这个接口　　半圆插座 = 我需要这个接口　　虚线 delegate = 外层口子转交给里面的零件</text>
+</svg>

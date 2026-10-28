@@ -1,0 +1,32 @@
+@startuml 06_deployment
+!pragma layout smetana
+skinparam shadowing false
+title 部署图 · 购物系统（实验1 图6）
+
+node "WebServer" as web {
+}
+note bottom of web
+  MiniPreprocessors = 2
+  MiniSpeed = 2.4GHz
+end note
+
+node "AppServer" as app {
+  artifact "ShoppingCart.jar" as cart
+  artifact "Order.jar" as order
+  cart ..> order
+}
+
+node "DatabaServer1" as db1
+note bottom of db1
+  Storage = 1 TB
+end note
+
+node "DatabaServer2" as db2
+note bottom of db2
+  Storage = 2 TB
+end note
+
+web -- app : <<RMI>>
+app -- db1 : <<JDBC>>
+app -- db2 : <<JDBC>>
+@enduml

@@ -1,0 +1,31 @@
+@startuml 02_class
+!pragma layout smetana
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+title 类图 · 电商（实验1 图2）
+
+class User
+class Customer
+class SystemManager
+class Accountant
+class Order
+class OrderItem
+class Product
+class BankService
+
+User <|-- Customer : Extends
+User <|-- SystemManager : Extends
+User <|-- Accountant : Extends
+
+Customer -- Order
+Order -- OrderItem
+OrderItem -- Product
+Order ..> BankService : Use
+
+note bottom
+  对照模板重画。
+  实线空心三角 = 继承（Extends）
+  实线 = 有联系
+  虚线箭头 = 依赖（Use）
+end note
+@enduml
