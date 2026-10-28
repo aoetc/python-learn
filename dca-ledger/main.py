@@ -5,16 +5,9 @@
 # 软设巩固：路径只在 ledger_path() 里算一次（可维护）
 #
 # TODO（第 28 天）：sys.argv 命令行 —— 见 notes/lesson28_实操_sys_argv.md
-
 import os
 import sys
-
-
-def ledger_path():
-    """账本 CSV 的完整路径（相对本文件所在目录）。"""
-    base = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(base, "data", "ledger.csv")
-
+from csv_io import ledger_path
 
 def do_add(date=None,money_text=None):
     try:
