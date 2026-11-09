@@ -39,3 +39,22 @@ cd ~/Developer/python-learn
 ## 现在从哪开始
 
 第 35 天（`d35/`）的题已经就绪。先花 30 分钟**验收** 15/16/26 那三次作业（代码已经写了，只是没打勾没跑过），再走 d35——见 `AUDIT.md` 第二节。
+
+## 开口文件（openers/）
+
+每科一份开场白，新开会话时 `@` 它，等于一键装载「读进度 → 自检 → 修正 → 等题」：
+
+```text
+@study/openers/java.md
+```
+
+| 科目 | 文件 |
+|---|---|
+| Python / 主线 | `openers/python.md` |
+| Java | `openers/java.md` |
+| 软设体系 | `openers/sheji.md` |
+| 软工导论 | `openers/ruangong.md` |
+| 金融工程 | `openers/jinrong.md` |
+| 数据可视化 | `openers/shujukeshihua.md` |
+| 六级 | `openers/liuji.md` |
+| 算法 | `openers/suanfa.md` |
