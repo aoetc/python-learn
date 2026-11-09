@@ -213,3 +213,5 @@ cython_debug/
 exercises/java_*/out/
 exercises/java_*/.idea/workspace.xml
 exercises/java_*/.idea/shelf/
+# 各 java 作业目录的 IDE 缓存（不进库）
+exercises/java_hw_*/.idea/
