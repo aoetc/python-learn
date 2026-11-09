@@ -15,5 +15,8 @@
   "python.pythonPath": "/Users/aoetc/Developer/python-learn/.venv/bin/python",
   "python.locator": "js",
   "python.useEnvironmentsExtension": false,
-  "python-envs.defaultEnvManager": "ms-python.python:venv"
+  "python-envs.defaultEnvManager": "ms-python.python:venv",
+  "notebook.defaultKernel": "python-learn",
+  "jupyter.kernels.filter": [],
+  "jupyter.widgetScriptSources": ["jsdelivr.com", "unpkg.com"]
 }
