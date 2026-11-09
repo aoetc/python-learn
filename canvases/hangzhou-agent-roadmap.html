@@ -1,0 +1,1144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>杭州 Agent 开发工程师 · 大二到毕业</title>
+<style>
+  :root{
+    --bg:#0b0d10; --panel:#14171c; --panel2:#191d24; --line:#262b33;
+    --fg:#e6e8eb; --muted:#9aa3ad; --dim:#6f7883;
+    --accent:#4c8dff; --ok:#3fb950; --warn:#d29922; --bad:#f85149;
+    --radius:10px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);
+    font:15px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif}
+  .wrap{max-width:1020px;margin:0 auto;padding:28px 20px 60px}
+  h1{font-size:26px;line-height:1.3;margin:0 0 8px;letter-spacing:.2px}
+  h2{font-size:18px;margin:26px 0 10px}
+  h3{font-size:15px;margin:20px 0 8px;color:#cfd5dc}
+  .sub{color:var(--muted);font-size:13.5px;margin:0}
+  .bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:18px 0 6px}
+  .btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--fg);
+    padding:6px 12px;border-radius:999px;font-size:13px;cursor:pointer}
+  .btn:hover{border-color:#3a424d;background:var(--panel2)}
+  .btn.primary{border-color:var(--accent);color:#cfe0ff}
+  .saved{color:var(--dim);font-size:12px;margin-left:4px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0 6px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px}
+  .stat b{display:block;font-size:20px;font-weight:600;letter-spacing:.3px}
+  .stat span{color:var(--muted);font-size:12.5px}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 20px}
+  .pill{appearance:none;border:1px solid var(--line);background:transparent;color:var(--muted);
+    padding:7px 14px;border-radius:999px;font-size:13.5px;cursor:pointer;white-space:nowrap}
+  .pill:hover{color:var(--fg);border-color:#3a424d}
+  .pill.active{background:#1b2a44;border-color:#365f9e;color:#d5e5ff}
+  .pill.done{color:#8fd694;border-color:#2c4a33}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:10px 0}
+  .card-h{display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:11px 14px;border-bottom:1px solid var(--line);font-size:14px;font-weight:600}
+  .card-b{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+  .callout{border:1px solid var(--line);border-left:3px solid var(--accent);background:#111a26;
+    border-radius:8px;padding:11px 14px;margin:10px 0;font-size:13.8px;color:#c8d3e0}
+  .callout.warn{border-left-color:var(--warn);background:#211a10;color:#e5d3ae}
+  .callout.ok{border-left-color:var(--ok);background:#0f1d13;color:#c5e3cb}
+  .callout b{display:block;margin-bottom:3px;color:#fff;font-size:13.5px}
+  .ck{display:flex;gap:10px;align-items:flex-start;background:none;border:0;color:var(--fg);
+    text-align:left;padding:4px 0;cursor:pointer;font:inherit;font-size:13.8px;line-height:1.55}
+  .ck .box{flex:0 0 17px;width:17px;height:17px;margin-top:2px;border:1.5px solid #4a525c;border-radius:5px;
+    display:flex;align-items:center;justify-content:center;font-size:12px;color:#0b0d10}
+  .ck.on .box{background:var(--ok);border-color:var(--ok)}
+  .ck.on .lb{color:var(--dim);text-decoration:line-through;text-decoration-color:#3d444d}
+  .divider{height:1px;background:var(--line);margin:6px 0}
+  table{width:100%;border-collapse:collapse;font-size:13.4px;margin:8px 0 4px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:12.5px;background:#12151a}
+  tr:last-child td{border-bottom:0}
+  .tbl-wrap{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .days{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}
+  .day-pill{appearance:none;border:1px solid var(--line);background:transparent;color:var(--muted);
+    padding:4px 10px;border-radius:999px;font-size:12.5px;cursor:pointer}
+  .day-pill:hover{color:var(--fg)}
+  .day-pill.active{background:#1b2a44;border-color:#365f9e;color:#d5e5ff}
+  .day-pill.done{color:#8fd694;border-color:#2c4a33}
+  .usage{height:12px;border-radius:999px;overflow:hidden;display:flex;background:#1b2028;margin:10px 0 6px}
+  .usage i{display:block;height:100%}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12.5px}
+  .legend em{font-style:normal;display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+  .todo{display:flex;gap:9px;align-items:flex-start;font-size:13.4px;padding:6px 0;border-bottom:1px dashed #22262d;cursor:pointer}
+  .todo:last-child{border-bottom:0}
+  .todo .dot{flex:0 0 16px;width:16px;height:16px;border-radius:50%;border:1.5px solid #4a525c;margin-top:3px;
+    display:flex;align-items:center;justify-content:center;font-size:11px;color:#0b0d10}
+  .todo.done .dot{background:var(--ok);border-color:var(--ok)}
+  .todo.done .tx{color:var(--dim);text-decoration:line-through}
+  .focus{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+  .focus .k{color:var(--dim);font-size:12px;margin-top:10px}
+  .focus .v{font-size:13.6px}
+  .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}
+  .foot{color:var(--dim);font-size:12.4px;margin-top:26px;border-top:1px solid var(--line);padding-top:14px}
+  .num{color:var(--accent);font-weight:600}
+  @media (max-width:760px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .grid2{grid-template-columns:1fr}
+    h1{font-size:21px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="bar">
+    <button class="btn" id="export">导出 JSON</button>
+    <button class="btn" id="copy">复制 JSON</button>
+    <label class="btn" for="import">导入 JSON</label>
+    <input id="import" type="file" accept=".json,application/json" hidden>
+    <span class="saved" id="saved">勾选自动存本机</span>
+  </div>
+  <div id="app"></div>
+  <div class="foot" id="foot"></div>
+</div>
+<script>
+const D = {
+ "TABS": [
+  {
+   "id": "start",
+   "label": "小白今日"
+  },
+  {
+   "id": "overview",
+   "label": "总览"
+  },
+  {
+   "id": "timeline",
+   "label": "学期时间线"
+  },
+  {
+   "id": "market",
+   "label": "【更新】市场校准"
+  },
+  {
+   "id": "jd",
+   "label": "JD 对照"
+  },
+  {
+   "id": "days90",
+   "label": "前 90 天"
+  },
+  {
+   "id": "finance",
+   "label": "金融怎么放"
+  }
+ ],
+ "GITHUB_STEPS": [
+  {
+   "id": "gh-account",
+   "label": "1. 浏览器打开 github.com 注册并验证邮箱"
+  },
+  {
+   "id": "gh-desktop",
+   "label": "2. 安装 GitHub Desktop（Windows 图形界面，比命令行先学这个）"
+  },
+  {
+   "id": "gh-signin",
+   "label": "3. Desktop 里 Sign in to GitHub.com"
+  },
+  {
+   "id": "gh-repo",
+   "label": "4. New repository：名字 python-learn，勾选 README，建在本机文件夹"
+  },
+  {
+   "id": "gh-cursor",
+   "label": "5. Cursor 里 File → Open Folder，打开这个文件夹"
+  },
+  {
+   "id": "gh-commit",
+   "label": "6. 改一个文件 → Desktop 左侧看到变化 → 写说明 → Commit"
+  },
+  {
+   "id": "gh-publish",
+   "label": "7. Publish repository（公开即可，方便以后给面试官看）"
+  }
+ ],
+ "DAY_SCRIPT": [
+  {
+   "id": "d35",
+   "day": "第 35 天",
+   "when": "缓冲 · 进 B 前",
+   "minutes": "90",
+   "liao": "不学新框架；复习错题本 1 页，或扫一眼 DeepSeek/通义「快速开始」",
+   "doNow": "二选一：① venv 里 pip install requests，GET 一个公开 JSON 接口打印 2～3 个字段；② 错题口述 + 重做 1 道旧编程题。",
+   "git": "有代码就 Commit；不要提交密钥。勾完后正式进阶段 B。"
+  },
+  {
+   "id": "d36",
+   "day": "第 36 天",
+   "when": "B · API 地基",
+   "minutes": "90",
+   "liao": "官方文档：申请 API Key、Base URL、Chat Completions 入门",
+   "doNow": "新建 agent 仓库或 `agent-lab/`：`.env` 放 KEY；确认 `.gitignore` 有 `.env`；写 5 行 README「如何配环境」。",
+   "git": "Commit：scaffold + gitignore。确认 GitHub 上看不到密钥。"
+  },
+  {
+   "id": "d37",
+   "day": "第 37 天",
+   "when": "B · 单轮对话",
+   "minutes": "90",
+   "liao": "SDK 或 requests 调 Chat API 的最小例子",
+   "doNow": "脚本：读 .env → 发一条 user 消息 → 打印 assistant 回复。跑通一次。",
+   "git": "Commit：hello chat。仍勿提交 .env。"
+  },
+  {
+   "id": "d38",
+   "day": "第 38 天",
+   "when": "B · 多轮",
+   "minutes": "90",
+   "liao": "messages 数组怎么攒历史；system 提示放哪",
+   "doNow": "多轮对话：至少 3 轮，历史正确传回；用 system 约束「简短中文回答」。",
+   "git": "Commit：multi-turn。"
+  },
+  {
+   "id": "d39",
+   "day": "第 39 天",
+   "when": "算法日",
+   "minutes": "90",
+   "liao": "不看新 API",
+   "doNow": "algo/ 做 1 道简单题（或复习哈希/括号）；对照错题本。",
+   "git": "Commit。"
+  },
+  {
+   "id": "d40",
+   "day": "第 40 天",
+   "when": "B · Function Calling 概念",
+   "minutes": "90",
+   "liao": "文档：tools / function calling / tool_calls 字段分别是什么",
+   "doNow": "一页笔记：模型「要调用」≠ 真执行；画「模型↔你的代码↔工具」三格图。",
+   "git": "Commit：notes 或 README 一节「工具调用心智模型」。"
+  },
+  {
+   "id": "d41",
+   "day": "第 41 天",
+   "when": "B · 第一个 tool schema",
+   "minutes": "90",
+   "liao": "JSON Schema：name / description / parameters",
+   "doNow": "定义 1 个工具 schema（如查本地 CSV 一行）；让模型在该问时返回 tool_calls（先不必真执行）。",
+   "git": "Commit：tool schema v1。"
+  },
+  {
+   "id": "d42",
+   "day": "第 42 天",
+   "when": "B · Agent 循环",
+   "minutes": "120",
+   "liao": "tool 结果怎么塞回 messages 再问模型",
+   "doNow": "写最小循环：有 tool_calls → 本地执行 → role=tool 回传 → 再 completion，直到纯文本答案。",
+   "git": "Commit：agent loop。"
+  },
+  {
+   "id": "d43",
+   "day": "第 43 天",
+   "when": "B · 真实工具 1",
+   "minutes": "90",
+   "liao": "无新章；对着自己的 schema 改",
+   "doNow": "工具 1 接真逻辑（如读 dca-ledger CSV / 本地笔记文件）；缺参数要报可读错误。",
+   "git": "Commit：tool-1 real。"
+  },
+  {
+   "id": "d44",
+   "day": "第 44 天",
+   "when": "B · 真实工具 2",
+   "minutes": "90",
+   "liao": "第二个工具的职责边界（别和工具 1 糊成一个）",
+   "doNow": "工具 2（如写文件 / 搜索目录 / 简单计算）；两工具都能被模型按需点到。",
+   "git": "Commit：tool-2。"
+  },
+  {
+   "id": "d45",
+   "day": "第 45 天",
+   "when": "B · 校验与失败样例",
+   "minutes": "90",
+   "liao": "参数校验写在工具入口，不靠模型「自觉」",
+   "doNow": "每个工具至少 1 个失败样例（缺参/路径不存在/类型错）；日志或打印可见。",
+   "git": "Commit：validation + failure samples。"
+  },
+  {
+   "id": "d46",
+   "day": "第 46 天",
+   "when": "算法日",
+   "minutes": "90",
+   "liao": "不看 Agent",
+   "doNow": "algo/ 1 道；保持手感。",
+   "git": "Commit。"
+  },
+  {
+   "id": "d47",
+   "day": "第 47 天",
+   "when": "B · 失败兜底",
+   "minutes": "90",
+   "liao": "roadmap：重试 / 降级 / 人审 三选一先落地一种",
+   "doNow": "工具挂了时：自动重试 1 次，或降级成「请人工确认」提示；写进 README。",
+   "git": "Commit：fallback。"
+  },
+  {
+   "id": "d48",
+   "day": "第 48 天",
+   "when": "B · 架构口述",
+   "minutes": "60",
+   "liao": "Context / Skills / Subagent / Memory / MCP 各自一句话",
+   "doNow": "画一页架构（五块 + 你的工具/RAG 落在哪）；对着画口述 3 分钟录音或笔记。",
+   "git": "Commit：architecture.md（可粗）。"
+  },
+  {
+   "id": "d49",
+   "day": "第 49 天",
+   "when": "B · RAG 切分",
+   "minutes": "90",
+   "liao": "RAG：文档 → chunk → 检索 → 塞进 prompt；先别上复杂框架",
+   "doNow": "准备 1～3 篇笔记/公开文本；按段落或固定字数切 chunk，存成 JSON/CSV。",
+   "git": "Commit：chunks 数据。"
+  },
+  {
+   "id": "d50",
+   "day": "第 50 天",
+   "when": "B · 检索",
+   "minutes": "90",
+   "liao": "可用关键词/简易 embedding；目标是「问到能找回相关段」",
+   "doNow": "实现 retrieve(query)→ top-k chunks；手测 3 个问题，相关段大致对。",
+   "git": "Commit：retriever。"
+  },
+  {
+   "id": "d51",
+   "day": "第 51 天",
+   "when": "B · RAG 接入对话",
+   "minutes": "90",
+   "liao": "检索结果放进 system/user 的哪一段更稳",
+   "doNow": "用户提问 → 检索 → 带上下文再 chat；对比「无检索」答错的一例。",
+   "git": "Commit：rag chat。"
+  },
+  {
+   "id": "d52",
+   "day": "第 52 天",
+   "when": "算法日",
+   "minutes": "90",
+   "liao": "不看 RAG",
+   "doNow": "algo/ 1 道。",
+   "git": "Commit。"
+  },
+  {
+   "id": "d53",
+   "day": "第 53 天",
+   "when": "B · 评测表骨架",
+   "minutes": "90",
+   "liao": "10 条 BadCase：输入 / 期望 / 实际 / 通过？；须含工具失败类",
+   "doNow": "建 `eval.md` 或 CSV：先列满 10 行题目（可先空「实际」）。至少 2 条是工具失败场景。",
+   "git": "Commit：eval skeleton。"
+  },
+  {
+   "id": "d54",
+   "day": "第 54 天",
+   "when": "B · 跑评测 1",
+   "minutes": "90",
+   "liao": "逐条跑，别一次改完再测",
+   "doNow": "填完至少 5 条「实际」；失败的标红并记一句话原因。",
+   "git": "Commit：eval half。"
+  },
+  {
+   "id": "d55",
+   "day": "第 55 天",
+   "when": "B · 跑评测 2",
+   "minutes": "90",
+   "liao": "修 1～2 个真 Bug，不要只改期望糊弄通过",
+   "doNow": "10 条尽量跑完；工具失败类必须有样例记录。",
+   "git": "Commit：eval 10。"
+  },
+  {
+   "id": "d56",
+   "day": "第 56 天",
+   "when": "B · README 可维护",
+   "minutes": "90",
+   "liao": "对照 roadmap P0：怎么跑 / 怎么挂 / 怎么修",
+   "doNow": "README：环境、命令、样例、常见报错、评测怎么跑。另一台或清空 venv 试一次。",
+   "git": "Commit + Push README。"
+  },
+  {
+   "id": "d57",
+   "day": "第 57 天",
+   "when": "B · AI Coding 举证",
+   "minutes": "60",
+   "liao": "规格→编码 Agent→你验收；主路径审查故事",
+   "doNow": "写半页：哪段用 Cursor/Codex 生成、你改了哪、如何验收。面试能讲 2 分钟。",
+   "git": "Commit：ai-coding-story.md。"
+  },
+  {
+   "id": "d58",
+   "day": "第 58 天",
+   "when": "B · P0 自检",
+   "minutes": "90",
+   "liao": "对照 roadmap P0 表逐项勾",
+   "doNow": "≥2 工具+RAG+10 BadCase+兜底+README+AI Coding 故事。缺的列「3 月补丁」清单。",
+   "git": "Commit：p0-checklist。未齐也 Continue，按缺口补。"
+  },
+  {
+   "id": "d59",
+   "day": "第 59 天",
+   "when": "算法日",
+   "minutes": "90",
+   "liao": "不看项目",
+   "doNow": "algo/ 1 道。",
+   "git": "Commit。"
+  },
+  {
+   "id": "d60",
+   "day": "第 60 天",
+   "when": "B · P1 框架二选一",
+   "minutes": "90",
+   "liao": "LangChain 或 Dify 文档「最小 Runnable / 最小应用」",
+   "doNow": "选一条：用框架重跑「多轮+1 工具」或导入现有流程；先跑通不求完美。",
+   "git": "Commit：p1 spike。"
+  },
+  {
+   "id": "d61",
+   "day": "第 61 天",
+   "when": "B · P1 取舍三句",
+   "minutes": "60",
+   "liao": "为何用/不用框架：控制力、调试、依赖",
+   "doNow": "笔记三句取舍；能对着简历讲。极紧可只口述，但尽量留下文件。",
+   "git": "Commit：langchain-or-dify-notes。"
+  },
+  {
+   "id": "d62",
+   "day": "第 62 天",
+   "when": "B · P2 MCP（可砍）",
+   "minutes": "90",
+   "liao": "MCP：什么是 server / tool；超时可砍，投前尽量补",
+   "doNow": "最小 MCP server 暴露 1 个工具；或书面说明「本周砍掉、补丁日期」。",
+   "git": "有代码就 Commit；砍掉就 Commit 一页 defer 说明。"
+  },
+  {
+   "id": "d63",
+   "day": "第 63 天",
+   "when": "B · MCP 调通或补缺口",
+   "minutes": "90",
+   "liao": "接上一日；或回头补 P0 红项",
+   "doNow": "Agent 调通 MCP；或专修 P0 自检里未勾项。",
+   "git": "Commit。"
+  },
+  {
+   "id": "d64",
+   "day": "第 64 天",
+   "when": "算法日",
+   "minutes": "90",
+   "liao": "不看 MCP",
+   "doNow": "algo/ 1 道。",
+   "git": "Commit。"
+  },
+  {
+   "id": "d65",
+   "day": "第 65 天",
+   "when": "B · P3 Skill 1",
+   "minutes": "90",
+   "liao": "公式：用熟→修烂→公开；目标共 2 个 Skill",
+   "doNow": "把反复用的提示/流程收成 Skill 1（自用先能跑）。",
+   "git": "Commit：skill-1。"
+  },
+  {
+   "id": "d66",
+   "day": "第 66 天",
+   "when": "B · P3 Skill 2",
+   "minutes": "90",
+   "liao": "第二个 Skill 场景别和第一个完全重复",
+   "doNow": "Skill 2；README 各写「解决什么痛」。",
+   "git": "Commit：skill-2。"
+  },
+  {
+   "id": "d67",
+   "day": "第 67 天",
+   "when": "B · Skill 公开",
+   "minutes": "60",
+   "liao": "脱敏：无密钥、无隐私路径",
+   "doNow": "Skill 推到公开仓库或本仓库 docs；别人按说明能用。",
+   "git": "Push。"
+  },
+  {
+   "id": "d68",
+   "day": "第 68 天",
+   "when": "B · 面试故事",
+   "minutes": "90",
+   "liao": "三个故事：项目难点 / 排错 / 长任务（规格→编码→验收）",
+   "doNow": "每条 5～8 句，必须指向仓库证据（提交/评测行/README）。",
+   "git": "Commit：interview-stories.md。"
+  },
+  {
+   "id": "d69",
+   "day": "第 69 天",
+   "when": "算法日",
+   "minutes": "90",
+   "liao": "不看简历",
+   "doNow": "algo/ 1 道。",
+   "git": "Commit。"
+  },
+  {
+   "id": "d70",
+   "day": "第 70 天",
+   "when": "B · P4 可选 / 评测向包装",
+   "minutes": "90",
+   "liao": "P4 只在投评测向时做；否则把 BadCase 写成「假设→变量→结论」",
+   "doNow": "二选一：升级评测表（分类/打分）；或把 10 条包装成小型实验记录（2 月第一波用）。",
+   "git": "Commit：eval packaging。"
+  },
+  {
+   "id": "d71",
+   "day": "第 71 天",
+   "when": "B · 简历初稿栏",
+   "minutes": "60",
+   "liao": "对照 notes/简历预览_2027寒假.md；证据合同五档",
+   "doNow": "更新项目栏：能写的才写；GitHub 链接；删空话。",
+   "git": "Commit：resume draft（可放 notes/）。"
+  },
+  {
+   "id": "d72",
+   "day": "第 72 天",
+   "when": "B · 出口总检",
+   "minutes": "90",
+   "liao": "P0 不可砍；P1–P3 按时间；P4 按岗位",
+   "doNow": "按 P0–P4 打勾；列出投递前必补 ≤3 项。准备与 C 第一波并行。",
+   "git": "Commit + Push。阶段 B 日课告一段落，之后按缺口补丁 + 实习门月表。"
+  }
+ ],
+ "B_SKIP": [
+  [
+   "前端全栈 / 漂亮 UI",
+   "B 不做；演示 CLI/脚本即可"
+  ],
+  [
+   "Docker / K8s 编排",
+   "放到阶段 E"
+  ],
+  [
+   "多 Agent 大中台",
+   "E 出口再碰最小可演示"
+  ],
+  [
+   "SFT / LoRA 实操训练",
+   "E 只花 2–3 小时常识"
+  ],
+  [
+   "为「金融」海投卡硕岗",
+   "金科是场景词，不是自动池"
+  ],
+  [
+   "P0 未齐就海投应用工程主力",
+   "第二波要等 P0 可演示；第一波评测/小创业可并行"
+  ]
+ ],
+ "WEEKLY_SEGMENTS": [
+  {
+   "id": "python",
+   "value": 7,
+   "color": "blue"
+  },
+  {
+   "id": "algo",
+   "value": 3,
+   "color": "purple"
+  },
+  {
+   "id": "docs",
+   "value": 2,
+   "color": "green"
+  },
+  {
+   "id": "finance",
+   "value": 2,
+   "color": "orange"
+  }
+ ],
+ "PHASES": [
+  {
+   "id": "A",
+   "when": "2026.9–11",
+   "name": "Python 先于一切",
+   "exit": "CLI 小工具上 GitHub",
+   "intern": "不投 Agent 岗；算法不断档"
+  },
+  {
+   "id": "B",
+   "when": "2026.12–2027.3",
+   "name": "最小 Agent 闭环",
+   "exit": "P0 工具+RAG+评测；P1 框架二选一；Skill×2",
+   "intern": "2 月第一波可与 B 尾并行"
+  },
+  {
+   "id": "C",
+   "when": "2027.2–5",
+   "name": "投递窗口",
+   "exit": "日常/暑假实习面试",
+   "intern": "可早于暑假上车"
+  },
+  {
+   "id": "D",
+   "when": "2027；暑假集中",
+   "name": "第一段实习",
+   "exit": "脱敏复盘 + 导师评价",
+   "intern": "创业/中厂+评测+同花顺研发；恒生监控池"
+  },
+  {
+   "id": "E",
+   "when": "2027.9–2028.6",
+   "name": "加深 + 二段实习 + 笔试",
+   "exit": "编排/Memory；【更新】笔试选择+编程接到位",
+   "intern": "【更新】冲蚂蚁/淘天/阿里云/字节"
+  },
+  {
+   "id": "F",
+   "when": "2028.7–2029.6",
+   "name": "秋招收口",
+   "exit": "杭州 Agent 应用正式岗",
+   "intern": "2028.8–10 秋招主战场"
+  }
+ ],
+ "JD_ROWS": [
+  {
+   "clause": "计算机/软工/AI 相关",
+   "kind": "硬门槛",
+   "when": "课业全程",
+   "proof": "专业在读即可，成绩别挂科",
+   "checkId": "jd-major"
+  },
+  {
+   "clause": "熟练 Python",
+   "kind": "硬门槛",
+   "when": "阶段 A",
+   "proof": "独立写 CLI、会 venv/Git、作业自己能改",
+   "checkId": "jd-python"
+  },
+  {
+   "clause": "独立完成至少一个 LLM/Agent 小项目",
+   "kind": "硬门槛",
+   "when": "阶段 B",
+   "proof": "GitHub README 一页讲清架构 + 可跑",
+   "checkId": "jd-project"
+  },
+  {
+   "clause": "能讲 Context / Skills / Subagent / Memory / MCP",
+   "kind": "硬门槛",
+   "when": "阶段 B",
+   "proof": "自己画流程图，面试能口头走一遍",
+   "checkId": "jd-concepts"
+  },
+  {
+   "clause": "Tool / MCP 生成与调试",
+   "kind": "职责",
+   "when": "B → D",
+   "proof": "项目里至少 2 个真实工具；实习再碰 MCP",
+   "checkId": "jd-tools"
+  },
+  {
+   "clause": "Skills 写法、Prompt 迭代【更新】",
+   "kind": "职责",
+   "when": "B → D",
+   "proof": "2–3 个公开 Skill（SKILL.md）+ 前后对比",
+   "checkId": "jd-skills"
+  },
+  {
+   "clause": "Subagent 调试",
+   "kind": "职责",
+   "when": "E 或实习",
+   "proof": "二段实习或大三编排实验",
+   "checkId": "jd-subagent"
+  },
+  {
+   "clause": "Context Engineering 与 Memory",
+   "kind": "职责",
+   "when": "B 概念 / E 实验",
+   "proof": "写入 vs 召回对比表，或压缩前后评测",
+   "checkId": "jd-memory"
+  },
+  {
+   "clause": "BadCase 与评测集",
+   "kind": "职责",
+   "when": "阶段 B 起",
+   "proof": "固定 10 题评测表，失败原因分类",
+   "checkId": "jd-eval"
+  },
+  {
+   "clause": "【更新】LangChain 或 Dify 跑通过",
+   "kind": "加分",
+   "when": "阶段 B",
+   "proof": "简历一句 + 能讲「用它做了什么 / 为何不全靠它」",
+   "checkId": "jd-framework"
+  },
+  {
+   "clause": "【更新】Java 能写简单后端接口",
+   "kind": "硬门槛",
+   "when": "课内→E（跟课表）",
+   "proof": "课设或小 Demo：HTTP+JSON；不深 JVM",
+   "checkId": "jd-java"
+  },
+  {
+   "clause": "【更新】Linux + Git + SQL",
+   "kind": "硬门槛",
+   "when": "E 笔试专项加码",
+   "proof": "笔试/上机不慌；恒生等 JD 点名",
+   "checkId": "jd-linux-sql"
+  },
+  {
+   "clause": "【更新】SFT/LoRA 常识（非训练）",
+   "kind": "加分",
+   "when": "阶段 E · 2–3 小时",
+   "proof": "能口述：微调是什么、何时用、与 RAG 怎么选",
+   "checkId": "jd-lora"
+  },
+  {
+   "clause": "日常用 Cursor / Claude Code 写代码",
+   "kind": "加分",
+   "when": "现在开始",
+   "proof": "能讲一次长任务：哪步会烂、你怎么接管",
+   "checkId": "jd-cursor"
+  },
+  {
+   "clause": "用 Agent 跑完长链路任务并有洞察",
+   "kind": "加分",
+   "when": "A–B 用课业/项目练",
+   "proof": "重构作业、调研、或投研 Agent",
+   "checkId": "jd-longchain"
+  }
+ ],
+ "WEEK_PLAN": [
+  {
+   "id": "w1",
+   "week": "W1",
+   "dates": "9/1–9/7",
+   "python": "类型、if/for、list/dict；对照 C：没有指针，赋值是引用",
+   "algo": "两数之和、有效括号（各 1 题，先暴力）",
+   "ship": "装好 Python、Git、Cursor；建仓库 README"
+  },
+  {
+   "id": "w2",
+   "week": "W2",
+   "dates": "9/8–9/14",
+   "python": "函数、模块、`if __name__`、venv、pip",
+   "algo": "二分查找、移除元素",
+   "ship": "用 venv 跑通课内第一份 Python 作业"
+  },
+  {
+   "id": "w3",
+   "week": "W3",
+   "dates": "9/15–9/21",
+   "python": "读写文本、JSON、CSV；异常 try/except",
+   "algo": "哈希：字母异位词、存在重复元素",
+   "ship": "脚本：读一份 CSV 打印行数与列名"
+  },
+  {
+   "id": "w4",
+   "week": "W4",
+   "dates": "9/22–9/28",
+   "python": "pathlib、argparse；Git add/commit/log/diff",
+   "algo": "栈队列入门 1–2 题",
+   "ship": "每天至少 1 次有意义的 commit"
+  },
+  {
+   "id": "w5",
+   "week": "W5",
+   "dates": "9/29–10/5",
+   "python": "class、dataclass、类型标注；包结构",
+   "algo": "数组双指针",
+   "ship": "把 CSV 脚本改成函数 + assert"
+  },
+  {
+   "id": "w6",
+   "week": "W6",
+   "dates": "10/6–10/12",
+   "python": "requests 调公开 JSON API；超时与错误处理",
+   "algo": "滑动窗口思路题 1 道",
+   "ship": "CLI 子命令：add 追加一行 CSV"
+  },
+  {
+   "id": "w7",
+   "week": "W7",
+   "dates": "10/13–10/19",
+   "python": "项目骨架：src/、tests/、requirements.txt",
+   "algo": "复习 W1–W4 错题",
+   "ship": "dca-ledger：list 按日期列出"
+  },
+  {
+   "id": "w8",
+   "week": "W8",
+   "dates": "10/20–10/26",
+   "python": "分组统计：按月、按标的求和",
+   "algo": "前缀和或哈希计数 2 题",
+   "ship": "summary 输出月度投入与累计"
+  },
+  {
+   "id": "w9",
+   "week": "W9",
+   "dates": "10/27–11/2",
+   "python": "README 写法；.gitignore；不提交 venv",
+   "algo": "爬楼梯（简单 DP）",
+   "ship": "样例 data/sample.csv + 使用说明"
+  },
+  {
+   "id": "w10",
+   "week": "W10",
+   "dates": "11/3–11/9",
+   "python": "自己走一遍：克隆、venv、跑命令、修一个 bug",
+   "algo": "模拟 45 分钟：3 道简单题计时",
+   "ship": "GitHub 公开；阶段 A 出口完成"
+  }
+ ],
+ "SKILL_CHECKS": [
+  {
+   "id": "sk-py-syntax",
+   "label": "能不看文档写出 for/dict/函数"
+  },
+  {
+   "id": "sk-venv",
+   "label": "会创建 venv 并 freeze 依赖"
+  },
+  {
+   "id": "sk-git",
+   "label": "会 commit，能用 git diff 讲改了什么"
+  },
+  {
+   "id": "sk-csv",
+   "label": "会读写 CSV/JSON 并处理坏行"
+  },
+  {
+   "id": "sk-cli",
+   "label": "会用 argparse 做子命令"
+  },
+  {
+   "id": "sk-cursor",
+   "label": "Cursor 生成的代码自己审过再提交"
+  },
+  {
+   "id": "sk-algo12",
+   "label": "累计做完至少 12 道简单题并复盘错题"
+  },
+  {
+   "id": "sk-ship",
+   "label": "dca-ledger 已公开且别人按 README 能跑"
+  }
+ ]
+};
+const DAY = D.DAY_SCRIPT;
+const STORE = "hz-agent-roadmap-v1";
+const DEFAULT_TODOS = D.WEEK_PLAN.map(w => ({id:w.id, content:`${w.week} ${w.dates} · ${w.ship}`, status:"pending"}));
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+let S = (() => {
+  let raw = {};
+  try { raw = JSON.parse(localStorage.getItem(STORE) || "{}"); } catch(e) {}
+  return {
+    tab: raw.tab || "start",
+    checks: raw.checks || {},
+    weekTodos: (raw.weekTodos && raw.weekTodos.length) ? raw.weekTodos : DEFAULT_TODOS.map(x => ({...x})),
+    todayDay: raw.todayDay || null,
+  };
+})();
+
+function save(){
+  localStorage.setItem(STORE, JSON.stringify(S));
+  const el = document.getElementById("saved");
+  el.textContent = "已保存 " + new Date().toLocaleTimeString("zh-CN", {hour12:false});
+}
+function toggle(id, val){
+  S.checks[id] = (val === undefined) ? !S.checks[id] : val;
+  save(); render();
+}
+function nextOpenDay(){ return DAY.find(d => !S.checks["day-"+d.id]) || DAY[DAY.length-1]; }
+function dayDone(){ return DAY.filter(d => S.checks["day-"+d.id]).length; }
+function tbl(headers, rows, cls){
+  return `<div class="tbl-wrap"><table class="${cls||""}"><thead><tr>`
+    + headers.map(h => `<th>${esc(h)}</th>`).join("")
+    + `</tr></thead><tbody>`
+    + rows.map(r => `<tr>` + r.map(c => `<td>${c}</td>`).join("") + `</tr>`).join("")
+    + `</tbody></table></div>`;
+}
+function ck(id, label){
+  const on = !!S.checks[id];
+  return `<button class="ck ${on?"on":""}" data-toggle="${esc(id)}" role="checkbox" aria-checked="${on}">`
+    + `<span class="box">${on?"✓":""}</span><span class="lb">${esc(label)}</span></button>`;
+}
+
+/* ---------- views ---------- */
+function viewStart(){
+  const sunday = new Date().getDay() === 0;
+  const open = nextOpenDay();
+  const dayId = S.todayDay || open.id;
+  const f = DAY.find(d => d.id === dayId) || open;
+  const liaoId = `part-${f.id}-liao`, doId = `part-${f.id}-do`, gitId = `part-${f.id}-git`;
+  const dayIdKey = "day-" + f.id;
+  const allDone = S.checks[dayIdKey];
+  return `
+  ${sunday
+    ? `<div class="callout warn"><b>今天周日：先复习，不硬开新能力</b>打开 notes/复习_错题与存疑.md，口述卡住的几条；或重跑评测表里失败的 1～2 条。力扣新题今天别开。密钥永远别进 Git。</div>`
+    : `<div class="callout"><b>阶段 B · 最小 Agent（自第 35 天）</b>按 P0→P4 推进；文档跟你选的 API（DeepSeek / 通义等）。完整口径见 notes/roadmap_杭州Agent_2026市场校准版.md。阶段 A（1–34 天）已收口，不再列在本页。</div>`}
+  <h2>今日要完成</h2>
+  <div class="card">
+    <div class="card-h"><span>${sunday ? `复习日 · 进度停在 ${esc(f.day)}` : `${esc(f.day)} · 打开电脑就做这些`}</span>
+      <span class="pill ${allDone?"done":""}" style="cursor:default">${sunday?"复习日":esc(f.minutes)+" 分钟"}</span></div>
+    <div class="card-b">
+      ${sunday ? ck("sunday-review", "（仅周日）错题笔记过一遍，能口述 5～8 句") : ""}
+      ${ck(liaoId, "看：" + f.liao)}
+      ${ck(doId, "做：" + f.doNow)}
+      ${ck(gitId, "Git：" + f.git)}
+      <div class="divider"></div>
+      ${ck(dayIdKey, `${f.day} 整块完成（勾了下次自动跳下一天）`)}
+    </div>
+  </div>
+  <p class="sub">未勾完的天会自动顶上来。已完成 <b class="num">${dayDone()}/${DAY.length}</b>。点错天才改选：</p>
+  <div class="days">
+    ${DAY.map(d => {
+      const cls = (S.todayDay===d.id ? "active" : "") + (S.checks["day-"+d.id] ? " done" : "");
+      return `<button class="day-pill ${cls}" data-day="${d.id}">${esc(d.day)}${S.checks["day-"+d.id]?" ✓":""}</button>`;
+    }).join("")}
+  </div>
+  <h3>每天固定流程（≈2 小时）</h3>
+  ${tbl(["时段","做什么","多久"], [
+    ["先看本页「今日要完成」","按勾选做，做完打勾","1 分钟"],
+    ["接着","Agent 主线：看文档 + 自己敲","70 分钟"],
+    ["最后","GitHub Desktop Commit + Push","10 分钟"],
+    ["周二四六","力扣 1 道（写入 algo/）","30–40 分钟"],
+    ["周日","只复习，不学新章","40 分钟"],
+  ])}
+  <h3>阶段 B：先别做</h3>
+  ${tbl(["先别做","原因"], D.B_SKIP)}
+  <h3>出口提醒（P0）</h3>
+  <p class="sub">≥2 工具（含失败样例）+ RAG + 10 条 BadCase + 兜底 + README + AI Coding 举证。P1 LangChain/Dify；P2 MCP 可砍；P3 Skill×2；P4 仅评测向。</p>`;
+}
+
+function viewOverview(){
+  const seg = {blue:"#4c8dff",purple:"#a371f7",green:"#3fb950",orange:"#d29922"};
+  return `
+  <div class="callout"><b>【更新】第一段实习优先恒生/同花顺/杭州创业；第二段再冲蚂蚁/淘天/阿里云/字节。</b>蚂蚁星 PlanA 了解即可。金融是加分项不是入场券。</div>
+  <h2>学期中时间怎么切（每天 ≈2h）</h2>
+  <div class="usage">
+    ${D.WEEKLY_SEGMENTS.map(s => `<i style="width:${s.value/14*100}%;background:${seg[s.color]||"#555"}" title="${esc(s.id)} ${s.value}h"></i>`).join("")}
+  </div>
+  <div class="legend">
+    <span><em style="background:#4c8dff"></em>Python/项目 7h</span>
+    <span><em style="background:#a371f7"></em>算法 3h</span>
+    <span><em style="background:#3fb950"></em>Agent 文档 2h</span>
+    <span><em style="background:#d29922"></em>理财 2h</span>
+    <span>合计 14h/周</span>
+  </div>
+  <h2>主路径</h2>
+  ${tbl(["阶段","窗口","做什么","出口"], D.PHASES.map(p => [esc(p.id), esc(p.when), esc(p.name), esc(p.exit)]))}
+  <h2>现在不要做的三件事</h2>
+  <ul class="sub" style="padding-left:18px;margin:6px 0">
+    <li>现在投大厂 Agent 实习：先用 A+B 换入场券。</li>
+    <li>为理财考 CFA 或转专业：会挤掉项目和算法。</li>
+    <li>只看课不上 GitHub：面试官要可跑链路和失败解释。</li>
+  </ul>
+  <h2>本学期纪律（可勾）</h2>
+  ${ck("habit-cursor","Cursor 写的代码自己读 diff 再交")}
+  ${ck("habit-commit","学习日至少一次有说明的 git commit")}
+  ${ck("habit-algo","算法错题本：不会的隔一周再做")}
+  <p class="foot">完整校准说明见「市场校准」页签与仓库 notes/roadmap_杭州Agent_2026市场校准版.md。</p>`;
+}
+
+function viewTimeline(){
+  const p = (t) => `<p class="sub" style="margin:6px 0">${t}</p>`;
+  return `
+  <h2>2026.9 – 2029.6</h2>
+  ${tbl(["阶段","时间","目标","实习策略"], D.PHASES.map(x => [esc(x.id), esc(x.when), esc(x.name), esc(x.intern)]))}
+  <h3>阶段 A · Python</h3>
+  ${p("语法、venv、CSV/JSON、异常、Git。算法每周 3–4 题不断档。出口 dca-ledger；结束前检查：README 三步能跑、.gitignore、venv 说明、至少一次跨机复现。")}
+  <h3>阶段 B · 最小 Agent【更新】</h3>
+  ${p("API → 工具 → RAG → 10 条 BadCase（须含工具失败类）。出口硬标准：参数校验或失败样例、挂了有重试/降级/人审、README 可维护。LangChain/Dify 跑通一次能讲取舍。Skill 支线 2–3 个。证据合同：没证据不写「企业级/大幅提升」。")}
+  <h3>阶段 C · 投递</h3>
+  ${p("材料日历：2027.1 简历初稿 → 2 月 JD 对照表 → 3 月起双周投递表。三个故事须带证据。暑假仍是底线。")}
+  <h3>阶段 D · 第一段实习【更新】</h3>
+  ${p("恒生（Skills/评测）、同花顺（业务+工程）、杭州创业（能下场改）。结束交付：架构图 + ≥5 BadCase + 3 个改过的坑。")}
+  <h3>阶段 E · 大三【更新】</h3>
+  ${p("二段冲刺：蚂蚁、淘天、阿里云、字节。课内 Java 对齐到「能写简单接口」。笔试专项：选择+编程；OS/网络/数据库；Linux/Git/SQL。SFT/LoRA 只花 2–3 小时搞懂边界。技术加深只选一条编排或 Memory。")}
+  <h3>阶段 F · 秋招</h3>
+  ${p("2028.8–10 搜 Agent/大模型应用工程，地点杭州。作品集两个即可。")}`;
+}
+
+function viewMarket(){
+  return `
+  <div class="callout ok"><b>2026-09 真实 JD 调研（约 22 条）</b>验证了原框架五条核心；本页只列增补与校准。</div>
+  <h2>市场验证 · 保留不动</h2>
+  ${tbl(["保留项","市场信号"], [
+    ["Python 优先","10+ 家 JD 第一语言；蚂蚁/阿里/字节/恒生点名"],
+    ["可跑 Agent 项目 + README","蚂蚁：课程/开源/个人作品均可加分"],
+    ["Tool/MCP、RAG、评测 BadCase","阿里写完整 RAG + LLMOps 评测监控"],
+    ["Cursor / Claude Code","恒生智能体岗点名类工具"],
+    ["中小/本地第一段实习","恒生、同花顺招本科且在杭有 Agent 岗群"],
+  ])}
+  <h2>【更新】必须补进计划</h2>
+  ${tbl(["缺口","写进哪","做到什么程度"], [
+    ["Java 第二语言","课内→E","跟课表（多在大二下/大三上）；能写 HTTP+JSON 接口；不深 JVM。Go 非主选"],
+    ["笔试专项","E（2027.9 起）","每周算法衔接到 2028.6 选择+编程；OS/网络/库选择；Linux/Git/SQL"],
+    ["LangChain/Dify","B","跑通一次 RAG/Agent；简历能讲取舍；不深挖全家桶"],
+    ["SFT/LoRA","E","2–3 小时常识：微调是什么、何时用、vs RAG；不训练"],
+    ["Skill 支线","B","2–3 个 SKILL.md 上 GitHub；公式用熟→修烂→公开；A 前不碰"],
+    ["B 出口硬标准 + 证据合同","B→C","工具失败样例、挂了怎么办、评测含工具失败；没证据不写企业级/大幅提升"],
+    ["投递材料日历","C 前","2027.1 简历初稿；2 月 JD 对照；3 月起双周投递表"],
+    ["D 结束三件套","D","架构图 + ≥5 BadCase + 3 个改过的坑（喂二段面试）"],
+  ])}
+  <h2>【更新】公司分层</h2>
+  ${tbl(["层级","目标"], [
+    ["D 第一段优先","恒生、同花顺、杭州 AI 创业"],
+    ["E 第二段冲刺","蚂蚁、淘天、阿里云、字节（应用/Agent）"],
+    ["了解即可","蚂蚁星 PlanA 等顶尖专项——不作为目标"],
+  ])}
+  <h2>【更新】薪资锚点（防噪音）</h2>
+  ${tbl(["锚点","用法"], [
+    ["阿里 Agent 实习约 450–600 元/天","谈薪区间参考"],
+    ["恒生本科校招约 8k–1.1 万","本科对本科档"],
+    ["杭州应届执行到位约 15k/月","正常档，非天花板"],
+    ["应届 85 万 / 实习日薪 5500","营销号——忽略"],
+  ])}
+  <h2>双非拓展（每天 2h）</h2>
+  <p class="sub" style="margin:6px 0">杭州双非软工更稳的路径是：本地金融科技第一段实习证明「能干活」→ 用项目+评测+Skill 故事冲二段大厂应用岗。同花顺摘星/AIME 当加分通道，不硬赌。算法从阶段 A 不断档，因为笔试往往早于面试。</p>
+  <div class="callout warn"><b>你现在仍在阶段 A</b>先函数 + 两数之和入库。不要提前开 LangChain / Skill / Java 深造。</div>`;
+}
+
+function viewJd(){
+  const rows = D.JD_ROWS.map(r => [
+    esc(r.clause), esc(r.kind), esc(r.when), esc(r.proof),
+    `<span class="ck ${S.checks[r.checkId]?"on":""}" data-toggle="${esc(r.checkId)}" role="checkbox" aria-checked="${!!S.checks[r.checkId]}"><span class="box">${S.checks[r.checkId]?"✓":""}</span></span>`
+  ]);
+  return `
+  <div class="callout"><b>条款对齐 2026-09 市场调研 + 原 Boss/淘天公开要求。</b>勾选 = 已能向面试官证明。</div>
+  ${tbl(["条款","类型","何时对齐","证明物","完成"], rows)}
+  <h3>面试三个故事（阶段 C 前背熟）</h3>
+  <p class="sub" style="margin:4px 0">1. 项目：用户、工具、失败过什么、你怎么改评测。</p>
+  <p class="sub" style="margin:4px 0">2. 排障：报错或幻觉如何定位（日志、复现、缩小上下文）。</p>
+  <p class="sub" style="margin:4px 0">3. 长任务：Cursor/Agent 卡在哪、你何时接手。——Skill 支线喂 2 和 3。</p>`;
+}
+
+function viewDays90(){
+  const cur = S.weekTodos.find(t => t.status !== "completed") || S.weekTodos[0];
+  const det = D.WEEK_PLAN.find(w => w.id === (cur && cur.id)) || D.WEEK_PLAN[0];
+  const skillDone = D.SKILL_CHECKS.filter(s => S.checks[s.id]).length;
+  const todos = S.weekTodos.map(t => `
+    <div class="todo ${t.status==="completed"?"done":""}" data-todo="${esc(t.id)}">
+      <span class="dot">${t.status==="completed"?"✓":""}</span><span class="tx">${esc(t.content)}</span>
+    </div>`).join("");
+  return `
+  <h2>2026.9–11 · 十周执行表</h2>
+  <p class="sub">当前焦点：<b>${esc(det.week)}</b>（${esc(det.dates)}）。技能 <b class="num">${skillDone}/${D.SKILL_CHECKS.length}</b>。</p>
+  <div class="grid2">
+    <div>
+      <h3>本周焦点</h3>
+      <div class="focus">
+        <div class="card-h" style="padding:0 0 8px;border-bottom:0">
+          <span>${esc(det.dates)}</span><span class="pill active" style="cursor:default">${esc(det.week)}</span></div>
+        <div class="k">Python</div><div class="v">${esc(det.python)}</div>
+        <div class="k">算法（3–4 题）</div><div class="v">${esc(det.algo)}</div>
+        <div class="k">本周必须交出去的东西</div><div class="v">${esc(det.ship)}</div>
+      </div>
+      <div style="margin-top:12px">${todos}</div>
+      <button class="btn" id="resetTodos" style="margin-top:12px">重置十周勾选</button>
+    </div>
+    <div>
+      <h3>第一个 GitHub 题目：dca-ledger</h3>
+      <p class="sub">本地定投 CSV 统计 CLI。练工程卫生，为阶段 B 留数据格式。</p>
+      ${tbl(["项","约定"], [
+        ["仓库名","dca-ledger"],["输入","data/ledger.csv"],
+        ["列","date, symbol, amount_cny, note"],
+        ["命令","add / list / summary"],
+        ["禁止","提交 venv、密钥、真实隐私"],
+      ])}
+      <h3>阶段 A 技能清单</h3>
+      ${D.SKILL_CHECKS.map(s => ck(s.id, s.label)).join("")}
+    </div>
+  </div>
+  <div class="callout warn"><b>11 月中旬出口</b>别人按 README 能跑 dca-ledger。未完成不要开始 LangChain；可延后一周，不要并行开 Agent 框架。</div>`;
+}
+
+function viewFinance(){
+  return `
+  <h2>就业优先结论</h2>
+  ${tbl(["做法","建议"], [
+    ["CFA、实盘当主业、量化竞赛","不做求职主线"],
+    ["CAPE 定投、VIX、估值分位","个人素养 + Agent 业务场景"],
+    ["蚂蚁","智能体工程即可，金融证书非必须"],
+    ["同花顺","有投研 Agent 更加分；普通通道优先，摘星不硬赌"],
+  ])}
+  <h3>阶段 B 的金融题材（不要提前做）</h3>
+  <p class="sub" style="margin:6px 0">投研助手：公开数据或手工 CSV → 工具解释 CAPE/波动 → 定投规则说明 + 局限性。面试讲工具与评测，少讲荐股。</p>`;
+}
+
+const VIEWS = {start:viewStart, overview:viewOverview, timeline:viewTimeline,
+  market:viewMarket, jd:viewJd, days90:viewDays90, finance:viewFinance};
+
+function render(){
+  const ghDone = D.GITHUB_STEPS.filter(s => S.checks[s.id]).length;
+  const weeksDone = S.weekTodos.filter(t => t.status === "completed").length;
+  const jdDone = D.JD_ROWS.filter(r => S.checks[r.checkId]).length;
+  const stats = S.tab === "start" ? "" : `
+    <div class="stats">
+      <div class="stat"><b>${ghDone}/${D.GITHUB_STEPS.length}</b><span>GitHub 起步步骤</span></div>
+      <div class="stat"><b>2027 暑假</b><span>最晚第一段实习</span></div>
+      <div class="stat"><b>${weeksDone}/10</b><span>前 90 天周次完成</span></div>
+      <div class="stat"><b>${jdDone}/${D.JD_ROWS.length}</b><span>JD 条款已对齐</span></div>
+    </div>`;
+  document.getElementById("app").innerHTML = `
+    <h1>杭州 Agent 开发工程师 · 大二到毕业</h1>
+    <p class="sub">2026-09 市场校准版。框架保留；【更新】见「市场校准」页。完整文档也在仓库 notes/roadmap_杭州Agent_2026市场校准版.md。每天约 2 小时。</p>
+    ${stats}
+    <div class="tabs">
+      ${D.TABS.map(t => `<button class="pill ${S.tab===t.id?"active":""}" data-tab="${t.id}">${esc(t.label)}</button>`).join("")}
+    </div>
+    ${VIEWS[S.tab]()}
+  `;
+  document.getElementById("foot").innerHTML = "学期中课外约 12–14 小时（≈每天 2 小时）；考试周减半。不要同时开 PyTorch 训练、前端全栈、量化高频。 · 本页是 canvas 的离线等价版，数据存 localStorage，可导出为 canvas.data.json。";
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-tab],[data-toggle],[data-day],[data-todo],#resetTodos");
+  if (!t) return;
+  if (t.dataset.tab) { S.tab = t.dataset.tab; save(); render(); return; }
+  if (t.dataset.toggle) { toggle(t.dataset.toggle); return; }
+  if (t.dataset.day) { S.todayDay = t.dataset.day; save(); render(); return; }
+  if (t.dataset.todo) {
+    S.weekTodos = S.weekTodos.map(x => x.id === t.dataset.todo
+      ? {...x, status: x.status === "completed" ? "pending" : "completed"} : x);
+    save(); render(); return;
+  }
+  if (t.id === "resetTodos") { S.weekTodos = DEFAULT_TODOS.map(x => ({...x})); save(); render(); return; }
+});
+
+function canvasJson(){
+  return {
+    tab: S.tab,
+    checks: S.checks,
+    "focus-day": nextOpenDay().id,
+    "week-todos": S.weekTodos,
+    "today-day": S.todayDay || nextOpenDay().id,
+    "home-tab": S.tab,
+  };
+}
+document.getElementById("export").onclick = () => {
+  const blob = new Blob([JSON.stringify(canvasJson(), null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "hangzhou-agent-roadmap.canvas.data.json";
+  a.click(); URL.revokeObjectURL(a.href);
+};
+document.getElementById("copy").onclick = async () => {
+  try { await navigator.clipboard.writeText(JSON.stringify(canvasJson(), null, 2));
+    document.getElementById("saved").textContent = "已复制 JSON"; }
+  catch(err){ document.getElementById("saved").textContent = "复制失败，请用导出"; }
+};
+document.getElementById("import").onchange = async (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  try {
+    const j = JSON.parse(await f.text());
+    S.checks = j.checks || S.checks;
+    S.weekTodos = j["week-todos"] || S.weekTodos;
+    S.todayDay = j["today-day"] || S.todayDay;
+    S.tab = j["home-tab"] || j.tab || S.tab;
+    save(); render();
+  } catch(err) { document.getElementById("saved").textContent = "导入失败：不是合法 JSON"; }
+};
+
+render();
+</script>
+</body>
+</html>
