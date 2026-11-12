@@ -3,8 +3,6 @@
 #   ../.venv/bin/python main.py
 #
 # 软设巩固：路径只在 ledger_path() 里算一次（可维护）
-#
-# TODO（第 28 天）：sys.argv 命令行 —— 见 notes/lesson28_实操_sys_argv.md
 import os
 import sys
 from csv_io import ledger_path
